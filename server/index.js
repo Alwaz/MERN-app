@@ -10,8 +10,23 @@ const PORT = process.env.PORT || 5000;
 // / this is an express app
 const app = express();
 
+// to create  middlewares
+// api is passed through middlewares
+app.use(bodyParser.json({ limit: "30mb", extended: true }));
+app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
+app.use(cors());
+
 // server starting at port 5000
 app.listen(PORT);
+
+// creating api's
+app.get("/", (req, res) => {
+  res.send("Hello");
+});
+
+app.get("/images", (req, res) => {
+  res.send("Images api fired");
+});
 
 console.log("Server Running");
 try {
