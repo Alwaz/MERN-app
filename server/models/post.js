@@ -19,4 +19,4 @@ const PostSchema = mongoose.Schema({
 // Compile model from schema
 const Post = mongoose.model("PostModel", PostSchema);
 
-module.exports = Post;
+export default Post;

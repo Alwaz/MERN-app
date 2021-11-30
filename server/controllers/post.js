@@ -1,7 +1,8 @@
 import mongoose from "mongoose";
-import PostModel from "../models/post";
+import PostModel from "../models/post.js";
+import "../routes/post.js";
 
-export const getPost = async (req, res) => {
+export const getPosts = async (req, res) => {
   try {
     // will get all the fiels of model
     const posts = await PostModel.find();
@@ -11,14 +12,10 @@ export const getPost = async (req, res) => {
   }
 };
 // Here  we will define the logic
-
-export const createPost = async (req, res) => {
+export const createPosts = async (req, res) => {
   //    req.body to store data in collection
   const postBody = req.body;
-
-  //   creating a new model
-  const postImage = new PostModel(postBody);
-
+  const newPostImage = new PostModel(postBody); //   creating a new model
   try {
     await newPostImage.save();
     res.status(200).json(newPostImage);
