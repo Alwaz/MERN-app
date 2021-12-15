@@ -1,4 +1,3 @@
-import mongoose from "mongoose";
 import PostModel from "../models/post.js";
 import "../routes/post.js";
 

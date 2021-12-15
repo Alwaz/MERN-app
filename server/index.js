@@ -22,7 +22,7 @@ app.use("/post", postRoutes);
 // server starting at port 5000
 app.listen(PORT);
 
-console.log("Server Running");
+console.log(`Server Running at ${PORT}`);
 try {
   // Connect to the MongoDB cluster
   mongoose.connect(
