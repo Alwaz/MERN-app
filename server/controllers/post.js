@@ -1,7 +1,7 @@
 import PostModel from "../models/post.js";
-import "../routes/post.js";
 
 export const getPosts = async (req, res) => {
+  // res.send("getpost called");
   try {
     // will get all the fiels of model
     const posts = await PostModel.find();
@@ -10,7 +10,8 @@ export const getPosts = async (req, res) => {
     res.status(404).json({ message: err.message });
   }
 };
-// Here  we will define the logic
+
+// Here  we will define the logic for insersion
 export const createPosts = async (req, res) => {
   //    req.body to store data in collection
   const postBody = req.body;
@@ -22,3 +23,8 @@ export const createPosts = async (req, res) => {
     res.status(400).json({ message: err.message });
   }
 };
+
+// logic to edit post
+// export const editPosts = async(req,res)=>{
+
+// }

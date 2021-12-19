@@ -14,6 +14,7 @@ const PostSchema = mongoose.Schema({
     type: Date,
     default: new Date(),
   },
+ 
 });
 
 // Compile model from schema
