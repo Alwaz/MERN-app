@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import PostModel from "../models/post.js";
 
 export const getPosts = async (req, res) => {
@@ -24,7 +25,28 @@ export const createPosts = async (req, res) => {
   }
 };
 
-// logic to edit post
-// export const editPosts = async(req,res)=>{
+// logic for deletion
+export const deletePosts = async (req, res) => {
+  const { id } = req.params;
+  if (mongoose.Types.ObjectId.isValid(id)) {
+    PostModel.findByIdAndRemove(id);
+    res.json({ message: "Post deleted" });
+  } else {
+    return res.status(404).send(`couldn't find post`);
+  }
+};
 
-// }
+export const likePosts = async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id))
+    return res.status(404).send(`no post to like`);
+
+  const post = await PostModel.findById(id);
+  const updatedPost = await PostModel.findByIdAndUpdate(
+    id,
+    { likeCount: post.likeCount + 1 },
+    { new: true }
+  );
+  res.json(updatedPost);
+};
