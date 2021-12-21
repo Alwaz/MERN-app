@@ -17,6 +17,6 @@ router.post("/", createPosts);
 router.delete("/:id", deletePosts);
 
 // like patch request
-router.patch("/:id/likPost", likePosts);
+router.patch("/likePost/:id", likePosts);
 
 export default router;
