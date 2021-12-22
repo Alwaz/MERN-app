@@ -52,3 +52,16 @@ export const likePosts = async (req, res) => {
   );
   res.json(updatedPost);
 };
+
+export const updatePosts = async (req, res) => {
+  const { id: _id } = req.params;
+  const updatedPost = req.body;
+
+  if (!mongoose.Types.ObjectId.isValid(_id))
+    return res.status(404).send("No such post found");
+
+  const updatedPosts = await PostModel.findByIdAndUpdate(_id, updatedPost, {
+    new: true,
+  });
+  res.json(updatedPosts);
+};

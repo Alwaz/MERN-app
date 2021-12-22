@@ -5,6 +5,7 @@ import {
   createPosts,
   deletePosts,
   likePosts,
+  updatePosts,
 } from "../controllers/post.js";
 
 // get request
@@ -18,5 +19,8 @@ router.delete("/:id", deletePosts);
 
 // like patch request
 router.patch("/likePost/:id", likePosts);
+
+// update post route
+router.patch("/:id", updatePosts);
 
 export default router;
